@@ -1,3 +1,6 @@
+* {
+  caret-color: transparent;
+}
 body {
   margin: 0; /* Reset default body margin */
   display: flex;
@@ -5,6 +8,7 @@ body {
   align-items: center; /* Vertically center the main container */
   height: 100vh; /* Set the body height to full viewport height */
 }
+
 
 nav {
   height: 300px;
@@ -14,18 +18,24 @@ nav {
   gap: 30px;
 }
 
+button{
+  cursor:pointer;
+}
+
 .main-container {
   display: flex;
   gap: 30px;
 }
 
 .grid-container {
-    display: inline-grid;
-    width:600px;
-    height: 600px;
-    border:1px solid black;
+  display: inline-grid;
+  width: 600px;
+  height: 600px;
+  border: 1px solid black;
 }
 
 .grid-container > * {
-    border: 1px solid black;
+  border: 1px solid black;
 }
+
+
