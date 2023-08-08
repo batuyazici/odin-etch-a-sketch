@@ -2,6 +2,8 @@ const gridContainer = document.querySelector(".grid-container");
 const inputButton = document.querySelector("#input-button");
 const resetButton = document.querySelector("#reset-button");
 const rgbButton = document.querySelector("#rgb-button");
+const effectButton = document.querySelector("#effect-button");
+const defaultButton = document.querySelector("#default-button");
 let colorMode = "black";
 let gridItems;
 function createGrid(input = null) {
@@ -26,40 +28,54 @@ function createGrid(input = null) {
   gridItems = document.querySelectorAll(".grid-item");
   gridItems.forEach((item) => {
     item.addEventListener("mouseover", () => {
-      if(!item.classList.contains("colored") && colorMode !== "effect") {
-      item.setAttribute("style", `background-color:${chooseColor(colorMode)}`);
-      item.classList.add("colored","dark-0");
-      } else{
-        if(!item.classList.contains("dark-9")) {
-        let color = getComputedStyle(item).backgroundColor;
-        
-        }
-        else {
-          return;
-        }
+      if (!item.classList.contains("colored") && colorMode !== "effect") {
+        item.classList.add("colored", "dark-0");
+        item.setAttribute(
+          "style",
+          `background-color:${chooseColor(colorMode)}`
+        );
+      } else if (colorMode === "effect") {
+        item.setAttribute(
+          "style",
+          `background-color:${chooseColor(colorMode, item)}`
+        );
       }
     });
   });
-  
 }
 
-function chooseColor(mode = null) {
+function chooseColor(mode = null, item = null) {
   let color = "#";
-  if ((mode === "RGB")) {
+  if (mode === "RGB") {
     const letters = "0123456789ABCDEF";
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }
-  } else if ((mode === "black")) {
+  } else if (mode === "black") {
     color += "000000";
-  } else if ((mode === "effect")){
-    return;
+  } else if (mode === "effect") {
+    let effectLevelText = "";
+    let effectLevel;
+    let colorCurrent = getComputedStyle(item).backgroundColor;
+    if (!item.classList.contains("dark-10")) {
+      for (let level of item.classList.values()) {
+        if (level.includes("dark")) {
+          effectLevelText += level;
+          effectLevelText = effectLevelText.split("-");
+          effectLevel = +effectLevelText[1] + 1;
+          color = pSBC(-+effectLevel / 10, colorCurrent);
+          item.classList.replace(level, `dark-${effectLevel}`);
+        }
+      }
+    } else {
+      color = colorCurrent;
+    }
   }
   return color;
 }
 
 function changeColorMode(newMode) {
-    colorMode = newMode;
+  colorMode = newMode;
 }
 inputButton.addEventListener("click", () => {
   let input = +prompt("Please enter the number of square per size:");
@@ -73,9 +89,15 @@ resetButton.addEventListener("click", () => {
 });
 
 rgbButton.addEventListener("click", () => {
-    changeColorMode("RGB");
+  changeColorMode("RGB");
 });
 
+effectButton.addEventListener("click", () => {
+  changeColorMode("effect");
+});
+defaultButton.addEventListener("click", () => {
+  changeColorMode("black");
+});
 const pSBC=(p,c0,c1,l)=>{
 	let r,g,b,P,f,t,h,m=Math.round,a=typeof(c1)=="string";
 	if(typeof(p)!="number"||p<-1||p>1||typeof(c0)!="string"||(c0[0]!='r'&&c0[0]!='#')||(c1&&!a))return null;
@@ -106,6 +128,3 @@ pSBC.pSBCr=(d)=>{
 };
 
 createGrid();
-
-
-
