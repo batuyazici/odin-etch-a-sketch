@@ -2,24 +2,28 @@
   caret-color: transparent;
 }
 body {
-  margin: 0; /* Reset default body margin */
+  background-color: #8b9492;
+  margin: 0;
   display: flex;
-  justify-content: center; /* Horizontally center the main container */
-  align-items: center; /* Vertically center the main container */
-  height: 100vh; /* Set the body height to full viewport height */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-
+button {
+  margin-bottom: 2px;
+}
 nav {
+  padding: 0 10px;
+  margin: 0;
   height: 300px;
-  width: auto;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: 30px;
-}
-
-button{
-  cursor:pointer;
+  background-color: rgb(241, 237, 247);
+  border: 12px solid rgb(220, 53, 69);
+  border-radius: 0.5em;
 }
 
 .main-container {
@@ -29,15 +33,45 @@ button{
 
 .grid-container {
   display: inline-grid;
-  width: 600px;
-  height: 600px;
-  padding: 25px;
+  width: 700px;
+  height: 700px;
+  padding: 10px;
   background-clip: content-box;
-  box-shadow: inset 0 0 0 25px rgba(var(--bs-danger-rgb),var(--bs-border-opacity));
+  background-color: white;
+  box-shadow: inset 0 0 0 10px
+    rgba(var(--bs-danger-rgb), var(--bs-border-opacity));
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  max-width: 300px;
 }
 
 .grid-container > * {
-  border: 2px solid black;
+  border: 1.5px solid black;
 }
 
+.custom-bold {
+  font-weight: bold; /* Make the font bold */
+  border-width: 2px;
+}
 
+.mode-container {
+  padding: 0 25px;
+  height: 250px;
+  width: 108.750px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  background-color: rgb(241, 237, 247);
+  border: 12px solid rgb(220, 53, 69);
+  border-radius: 0.5em;
+}
+
+.mode-img {
+max-width: 250px;
+max-height: 150px;
+}
