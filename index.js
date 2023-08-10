@@ -113,25 +113,7 @@ function chooseColor(mode = null, item = null) {
 
 function changeColorMode(newMode = null) {
   colorMode = newMode;
-  // showColorMode();
 }
-
-// function showColorMode() {
-//   modeContainer.replaceChildren();
-//   const img = document.createElement("img");
-//   img.classList.add("mode-img");
-  
-//   if (colorMode === "black") {
-//   } else if (colorMode === "RGB") {
-//     img.src = "./assets/nyan.gif";
-//   } else if (colorMode === "effect") {
-//   } else {
-//     modeContainer.replaceChildren();
-//     return;
-//   }
-  
-//   modeContainer.appendChild(img);
-// }
 
 function limitedPrompt(message, maxNumber) {
   let userInput = prompt(message);
