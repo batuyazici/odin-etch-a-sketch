@@ -57,21 +57,3 @@ nav {
   font-weight: bold; /* Make the font bold */
   border-width: 2px;
 }
-
-.mode-container {
-  padding: 0 25px;
-  height: 250px;
-  width: 108.750px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  gap: 30px;
-  background-color: rgb(241, 237, 247);
-  border: 12px solid rgb(220, 53, 69);
-  border-radius: 0.5em;
-}
-
-.mode-img {
-max-width: 250px;
-max-height: 150px;
-}
